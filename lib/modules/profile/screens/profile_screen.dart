@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/widgets/custom_app_bar.dart';
 import 'package:fluttertask/core/widgets/profile_header.dart';
+import 'package:fluttertask/modules/profile/controller/profle_controller.dart';
 import 'package:fluttertask/modules/profile/widgets/profile_action_tabs.dart';
 import 'package:fluttertask/modules/profile/widgets/profile_screen_options.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -16,10 +18,17 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 16),
             const CustomAppBar(),
             const SizedBox(height: 16),
-            ProfileHeader(
-              imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
-              name: 'Madison Smith',
-              email: 'zyad@gmail.com',
+            GetBuilder<ProfileController>(
+              init: ProfileController(Get.find()),
+              builder: (controller) {
+                return ProfileHeader(
+                  imageUrl:
+                      controller.user?.imageUrl ??
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s',
+                  name: controller.user?.name ?? 'zyad',
+                  email: controller.user?.email ?? 'zyad@gmail.com',
+                );
+              },
             ),
 
             const SizedBox(height: 20),

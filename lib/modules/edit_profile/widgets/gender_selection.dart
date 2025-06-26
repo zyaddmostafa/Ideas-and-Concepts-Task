@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/modules/edit_profile/controller/edit_profile_controller.dart';
+import 'package:get/get.dart';
 
 class GenderSelection extends StatelessWidget {
   const GenderSelection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        _CustomRadio(label: 'Male', selected: true),
-        const SizedBox(width: 16),
-        _CustomRadio(label: 'Female', selected: false),
-      ],
+    final controller = Get.find<EditProfileController>();
+    return Obx(
+      () => Row(
+        children: [
+          GestureDetector(
+            onTap: () => controller.isMale.value = true,
+            child: _CustomRadio(
+              label: 'Male',
+              selected: controller.isMale.value,
+            ),
+          ),
+          const SizedBox(width: 16),
+          GestureDetector(
+            onTap: () => controller.isMale.value = false,
+            child: _CustomRadio(
+              label: 'Female',
+              selected: !controller.isMale.value,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/modules/profile/controller/profle_controller.dart';
 import 'package:fluttertask/modules/profile/widgets/profile_tab_button.dart';
 import 'package:fluttertask/routes/routes.dart';
 import 'package:get/get.dart';
@@ -21,7 +22,11 @@ class ProfileActionTabs extends StatelessWidget {
             ProfileTabButton(
               icon: Icons.person,
               label: 'Edit Profile',
-              onTap: () => Get.toNamed(Routes.editProfileScreen),
+              onTap:
+                  () => Get.toNamed(
+                    Routes.editProfileScreen,
+                    arguments: Get.find<ProfileController>().user,
+                  ),
             ),
             Container(height: 40, width: 1.5, color: AppColor.white),
             ProfileTabButton(

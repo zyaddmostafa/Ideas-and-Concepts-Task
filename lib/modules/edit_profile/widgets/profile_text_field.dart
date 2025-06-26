@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
 
 class ProfileTextField extends StatelessWidget {
-  final String initialValue;
-  const ProfileTextField({super.key, required this.initialValue});
+  final TextEditingController controller;
+
+  const ProfileTextField({super.key, required this.controller});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      initialValue: initialValue,
-
+      controller: controller,
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColor.beige,
