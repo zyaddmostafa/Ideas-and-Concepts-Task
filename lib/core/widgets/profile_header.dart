@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertask/core/constants/app_color.dart';
 import 'package:fluttertask/core/widgets/profile_image.dart';
 import 'package:fluttertask/core/widgets/user_info.dart';
 
@@ -9,6 +8,7 @@ class ProfileHeader extends StatelessWidget {
   final String email;
   final double avatarRadius;
   final bool showCameraIcon;
+  final Color userInfoBackgroundColor;
   const ProfileHeader({
     super.key,
     required this.imageUrl,
@@ -16,6 +16,7 @@ class ProfileHeader extends StatelessWidget {
     required this.email,
     this.avatarRadius = 50,
     this.showCameraIcon = false,
+    this.userInfoBackgroundColor = Colors.transparent,
   });
 
   @override
@@ -28,7 +29,11 @@ class ProfileHeader extends StatelessWidget {
           showCameraIcon: showCameraIcon,
         ),
         const SizedBox(height: 12),
-        UserInfo(name: name, email: email, backgroundColor: AppColor.white),
+        UserInfo(
+          name: name,
+          email: email,
+          backgroundColor: userInfoBackgroundColor,
+        ),
       ],
     );
   }

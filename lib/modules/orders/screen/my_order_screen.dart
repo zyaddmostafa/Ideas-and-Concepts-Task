@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/widgets/custom_app_bar.dart';
 import 'package:fluttertask/modules/orders/data/model/order_model.dart';
-import 'package:fluttertask/modules/orders/widgets/order_section.dart';
+import 'package:fluttertask/modules/orders/widgets/orders_list_view.dart';
+import 'package:get/route_manager.dart';
 
 class MyOrderScreen extends StatelessWidget {
   const MyOrderScreen({super.key});
@@ -12,24 +13,11 @@ class MyOrderScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              child: CustomAppBar(title: 'My Orders'),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: CustomAppBar(title: 'My Orders', onBack: () => Get.back()),
             ),
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                itemCount: OrderModel.staticOrders.length,
-                itemBuilder: (context, index) {
-                  final order = OrderModel.staticOrders[index];
-                  return OrderSection(
-                    status: order.status,
-                    date: order.date,
-                    items: order.items,
-                  );
-                },
-              ),
-            ),
+            OrdersListView(orders: OrderModel.staticOrders),
           ],
         ),
       ),

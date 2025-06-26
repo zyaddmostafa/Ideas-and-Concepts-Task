@@ -3,15 +3,10 @@ import 'package:fluttertask/core/constants/app_color.dart';
 
 class CustomAppBar extends StatelessWidget {
   final VoidCallback? onBack;
-  final VoidCallback? onEdit;
+
   final String title;
 
-  const CustomAppBar({
-    super.key,
-    this.onBack,
-    this.onEdit,
-    this.title = 'My Profile',
-  });
+  const CustomAppBar({super.key, this.onBack, this.title = 'My Profile'});
 
   @override
   Widget build(BuildContext context) {

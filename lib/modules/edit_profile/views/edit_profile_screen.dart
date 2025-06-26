@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertask/core/constants/app_color.dart';
 import 'package:fluttertask/core/widgets/custom_app_bar.dart';
 import 'package:fluttertask/core/widgets/profile_header.dart';
 import 'package:fluttertask/modules/edit_profile/widgets/profile_edit_form.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -15,7 +18,7 @@ class EditProfileScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 16),
               // Custom App Bar
-              CustomAppBar(),
+              CustomAppBar(onBack: () => Get.back()),
               const SizedBox(height: 16),
 
               // Profile Image with Camera Icon
@@ -23,6 +26,8 @@ class EditProfileScreen extends StatelessWidget {
                 imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
                 name: 'Madison Smith',
                 email: 'zyad@gmail.com',
+                userInfoBackgroundColor: AppColor.beige,
+                showCameraIcon: true,
               ),
 
               const SizedBox(height: 20),
