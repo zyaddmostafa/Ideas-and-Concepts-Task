@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertask/modules/edit_profile/views/edit_profile_screen.dart';
-import 'package:fluttertask/modules/orders/screen/my_order_screen.dart';
-import 'package:fluttertask/modules/profile/screens/profile_screen.dart';
+import 'package:fluttertask/routes/app_routes.dart';
+import 'package:fluttertask/routes/routes.dart';
+import 'package:get/route_manager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyOrderScreen(),
+      initialRoute: Routes.initial,
+      getPages: AppRoutes.routes,
     );
   }
 }
