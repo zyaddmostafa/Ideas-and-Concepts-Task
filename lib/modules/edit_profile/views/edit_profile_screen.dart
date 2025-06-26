@@ -26,13 +26,29 @@ class EditProfileScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               // Profile Image with Camera Icon
-              ProfileHeader(
-                imageUrl: argument.imageUrl ?? '',
-                name: argument.name ?? 'Madison Smith',
-                email: argument.email ?? 'zyad@gmail.com',
-                userInfoBackgroundColor: AppColor.beige,
-                showCameraIcon: true,
+              GetX<EditProfileController>(
+                builder: (controller) {
+                  final img =
+                      controller.imageUrl!.value.isNotEmpty
+                          ? controller.imageUrl!.value
+                          : argument.imageUrl ?? '';
+                  return ProfileHeader(
+                    imageUrl: img,
+
+                    name: argument.name ?? 'Madison Smith',
+                    email: argument.email ?? 'zyad@gmail.com',
+                    userInfoBackgroundColor: AppColor.beige,
+                    showCameraIcon: true,
+                    onImageTap: () {
+                      controller.pickAndUploadImage();
+                    },
+                  );
+                },
               ),
+
+              const SizedBox(height: 20),
+              // Form Fields
+              ProfileEditForm(),
 
               const SizedBox(height: 20),
               // Form Fields

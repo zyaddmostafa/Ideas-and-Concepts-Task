@@ -9,6 +9,7 @@ class ProfileHeader extends StatelessWidget {
   final double avatarRadius;
   final bool showCameraIcon;
   final Color userInfoBackgroundColor;
+  final VoidCallback? onImageTap;
   const ProfileHeader({
     super.key,
     required this.imageUrl,
@@ -17,16 +18,20 @@ class ProfileHeader extends StatelessWidget {
     this.avatarRadius = 60,
     this.showCameraIcon = false,
     this.userInfoBackgroundColor = Colors.transparent,
+    this.onImageTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ProfileImage(
-          imageUrl: imageUrl,
-          radius: avatarRadius,
-          showCameraIcon: showCameraIcon,
+        InkWell(
+          onTap: onImageTap,
+          child: ProfileImage(
+            imageUrl: imageUrl,
+            radius: avatarRadius,
+            showCameraIcon: showCameraIcon,
+          ),
         ),
         const SizedBox(height: 12),
         UserInfo(

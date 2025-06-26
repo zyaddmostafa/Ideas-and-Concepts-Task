@@ -26,7 +26,7 @@ class UserInfo extends StatelessWidget {
           Text(
             email,
             style: AppTextStyles.font15Medium.copyWith(
-              color: AppColor.black.withOpacity(0.8),
+              color: AppColor.black.withValues(alpha: .8),
             ),
           ),
         ],
