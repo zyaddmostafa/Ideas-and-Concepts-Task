@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   final VoidCallback? onBack;
@@ -24,11 +25,7 @@ class CustomAppBar extends StatelessWidget {
             child: Text(
               title,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: AppColor.salamon,
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-              ),
+              style: AppTextStyles.font22Bold.copyWith(color: AppColor.salamon),
             ),
           ),
           const Spacer(),

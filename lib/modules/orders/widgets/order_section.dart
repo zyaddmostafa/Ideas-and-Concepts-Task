@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 import 'package:fluttertask/modules/orders/data/model/order_item_model.dart';
 import 'package:fluttertask/modules/orders/widgets/order_item_card.dart';
 
@@ -26,11 +27,15 @@ class OrderSection extends StatelessWidget {
             children: [
               Text(
                 'Order: $status',
-                style: const TextStyle(fontSize: 13, color: Colors.black54),
+                style: AppTextStyles.font13Regular.copyWith(
+                  color: Colors.black54,
+                ),
               ),
               Text(
                 date,
-                style: const TextStyle(fontSize: 13, color: Colors.black54),
+                style: AppTextStyles.font13Regular.copyWith(
+                  color: Colors.black54,
+                ),
               ),
             ],
           ),

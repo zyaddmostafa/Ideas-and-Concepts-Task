@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 import 'package:fluttertask/modules/edit_profile/controller/edit_profile_controller.dart';
 import 'package:get/get.dart';
 
@@ -63,10 +64,7 @@ class _CustomRadio extends StatelessWidget {
                     : null,
           ),
           const SizedBox(width: 12),
-          Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
-          ),
+          Text(label, style: AppTextStyles.font15Medium),
         ],
       ),
     );

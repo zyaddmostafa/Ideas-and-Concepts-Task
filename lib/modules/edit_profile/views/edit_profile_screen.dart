@@ -3,9 +3,11 @@ import 'package:fluttertask/core/constants/app_color.dart';
 import 'package:fluttertask/core/widgets/custom_app_bar.dart';
 import 'package:fluttertask/core/widgets/profile_header.dart';
 import 'package:fluttertask/data/models/user_model.dart';
+import 'package:fluttertask/modules/edit_profile/controller/edit_profile_controller.dart';
+import 'package:fluttertask/modules/edit_profile/widgets/custom_elevated_button.dart';
 import 'package:fluttertask/modules/edit_profile/widgets/profile_edit_form.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:fluttertask/routes/routes.dart';
+import 'package:get/get.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -25,9 +27,7 @@ class EditProfileScreen extends StatelessWidget {
 
               // Profile Image with Camera Icon
               ProfileHeader(
-                imageUrl:
-                    argument.imageUrl ??
-                    'https://randomuser.me/api/portraits/women/44.jpg',
+                imageUrl: argument.imageUrl ?? '',
                 name: argument.name ?? 'Madison Smith',
                 email: argument.email ?? 'zyad@gmail.com',
                 userInfoBackgroundColor: AppColor.beige,
@@ -36,12 +36,13 @@ class EditProfileScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
               // Form Fields
-              ProfileEditForm(
-                fullName: argument.name ?? 'Madison Smith',
-                email: argument.email ?? 'Madisons@Example.Com',
-                mobileNumber: argument.phoneNumber ?? '+123 4567 890',
-                dateOfBirth: argument.birthday ?? '01 / 04 / 199X',
-                isMale: argument.isMale ?? true,
+              ProfileEditForm(),
+              CustomElevatedButton(
+                onPressed: () {
+                  final controller = Get.find<EditProfileController>();
+                  controller.updateUser();
+                  Get.toNamed(Routes.profileScreen);
+                },
               ),
             ],
           ),

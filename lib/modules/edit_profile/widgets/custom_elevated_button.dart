@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({super.key});
-
+  const CustomElevatedButton({super.key, required this.onPressed});
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -13,14 +14,10 @@ class CustomElevatedButton extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 55),
         ),
-        onPressed: () {},
-        child: const Text(
+        onPressed: onPressed,
+        child: Text(
           'Update Profile',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+          style: AppTextStyles.font20Bold.copyWith(color: AppColor.white),
         ),
       ),
     );

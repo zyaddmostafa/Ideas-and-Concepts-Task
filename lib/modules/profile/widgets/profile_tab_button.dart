@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 
 class ProfileTabButton extends StatelessWidget {
   final IconData icon;
@@ -22,10 +23,7 @@ class ProfileTabButton extends StatelessWidget {
           children: [
             Icon(icon, color: AppColor.black, size: 28),
             const SizedBox(height: 4),
-            Text(
-              label,
-              style: const TextStyle(color: AppColor.black, fontSize: 14),
-            ),
+            Text(label, style: AppTextStyles.font14Regular),
           ],
         ),
       ),

@@ -14,7 +14,7 @@ class ProfileHeader extends StatelessWidget {
     required this.imageUrl,
     required this.name,
     required this.email,
-    this.avatarRadius = 50,
+    this.avatarRadius = 60,
     this.showCameraIcon = false,
     this.userInfoBackgroundColor = Colors.transparent,
   });

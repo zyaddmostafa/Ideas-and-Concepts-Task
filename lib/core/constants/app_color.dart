@@ -7,4 +7,5 @@ class AppColor {
   static const brownRosy = Color(0xFFDCBEB6);
   static const salamon = Color(0xFFF4b5a4);
   static const beige = Color(0xFFFAF0E6);
+  static const black54 = Colors.black54;
 }

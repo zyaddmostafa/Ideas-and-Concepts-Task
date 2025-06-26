@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   final IconData icon;
@@ -13,7 +14,7 @@ class ProfileMenuItem extends StatelessWidget {
         backgroundColor: AppColor.salamon,
         child: Icon(icon, color: AppColor.black),
       ),
-      title: Text(label, style: const TextStyle(fontWeight: FontWeight.w500)),
+      title: Text(label, style: AppTextStyles.font15Medium),
       onTap: () {},
     );
   }

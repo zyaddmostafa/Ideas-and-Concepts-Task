@@ -11,7 +11,7 @@ class ProfileImage extends StatelessWidget {
     super.key,
     required this.imageUrl,
     this.showCameraIcon = true,
-    this.radius = 55,
+    required this.radius,
     this.onCameraTap,
   });
 
@@ -20,7 +20,13 @@ class ProfileImage extends StatelessWidget {
     return Stack(
       alignment: Alignment.bottomRight,
       children: [
-        CircleAvatar(radius: radius, backgroundImage: NetworkImage(imageUrl)),
+        CircleAvatar(
+          radius: radius,
+          backgroundImage: NetworkImage(imageUrl),
+          backgroundColor: AppColor.salamon.withValues(
+            alpha: 0.2, // Adjust alpha for a subtle background color
+          ),
+        ),
         if (showCameraIcon)
           Positioned(
             bottom: 4,

@@ -32,14 +32,14 @@ class OrderItemCard extends StatelessWidget {
             fit: StackFit.loose,
             children: [
               Container(
-                width: 60,
-                height: 60,
+                width: 80,
+                height: 80,
                 decoration: BoxDecoration(
                   color: AppColor.beige,
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              Image.asset(imageUrl, width: 70, height: 70, fit: BoxFit.cover),
+              Image.asset(imageUrl, width: 90, height: 90, fit: BoxFit.cover),
             ],
           ),
           const SizedBox(width: 12),

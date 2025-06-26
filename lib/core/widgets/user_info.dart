@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 
 class UserInfo extends StatelessWidget {
   final String name;
@@ -19,16 +21,12 @@ class UserInfo extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
-          Text(
-            name,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-          ),
+          Text(name, style: AppTextStyles.font20Bold),
 
           Text(
             email,
-            style: const TextStyle(
-              color: Colors.grey,
-              fontWeight: FontWeight.w500,
+            style: AppTextStyles.font15Medium.copyWith(
+              color: AppColor.black.withOpacity(0.8),
             ),
           ),
         ],

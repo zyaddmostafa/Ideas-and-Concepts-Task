@@ -22,9 +22,7 @@ class ProfileScreen extends StatelessWidget {
               init: ProfileController(Get.find()),
               builder: (controller) {
                 return ProfileHeader(
-                  imageUrl:
-                      controller.user?.imageUrl ??
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuNhTZJTtkR6b-ADMhmzPvVwaLuLdz273wvQ&s',
+                  imageUrl: controller.user?.imageUrl ?? '',
                   name: controller.user?.name ?? 'zyad',
                   email: controller.user?.email ?? 'zyad@gmail.com',
                 );

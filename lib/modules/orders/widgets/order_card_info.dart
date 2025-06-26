@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/utils/app_text_styles.dart';
 
 class OrderCardInfo extends StatelessWidget {
   const OrderCardInfo({
@@ -25,36 +26,37 @@ class OrderCardInfo extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: AppColor.terractta,
-            ),
+            style: AppTextStyles.font18Bold.copyWith(color: AppColor.terractta),
           ),
           Text(
             description,
-            style: const TextStyle(fontSize: 13, color: Colors.black54),
+            style: AppTextStyles.font14Regular.copyWith(
+              color: AppColor.black54,
+            ),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 6),
           Row(
             children: [
               Text(
                 price,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                style: AppTextStyles.font16Regular.copyWith(
+                  color: AppColor.black54,
                 ),
               ),
               const Spacer(),
-              Text(quantity, style: const TextStyle(fontSize: 14)),
+              Text(
+                quantity,
+                style: AppTextStyles.font16Regular.copyWith(
+                  color: AppColor.black54,
+                ),
+              ),
               const Spacer(),
               Text(
                 'Total: $total',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
+                style: AppTextStyles.font16Regular.copyWith(
+                  color: AppColor.black54,
                 ),
               ),
             ],

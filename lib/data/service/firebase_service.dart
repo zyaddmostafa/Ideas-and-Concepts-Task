@@ -22,7 +22,7 @@ class FirebaseService {
       await _firestore
           .collection(Constants.userCollection)
           .doc(userId)
-          .update(data);
+          .set(data, SetOptions(merge: true));
     } catch (e) {
       rethrow;
     }
