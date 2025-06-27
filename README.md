@@ -57,16 +57,16 @@ Below are screenshots of the main features of the app:
 
 ### Profile Screen
 
-![image_alt]([assets/screenshots/profile_screen.png](https://github.com/zyaddmostafa/Ideas-and-Concepts-Task/blob/main/profile_Screen.png?raw=true))
+![image_alt]((https://github.com/zyaddmostafa/Ideas-and-Concepts-Task/blob/main/profile_Screen.png?raw=true))
 
 ### Edit Profile Screen
 
-![Edit Profile Screen](assets/screenshots/edit_profile_screen.png)
+![image_alt](https://raw.githubusercontent.com/zyaddmostafa/Ideas-and-Concepts-Task/refs/heads/main/Edit_Profile_Screen.png)
 
 ### My Orders Screen
 
-![My Orders Screen](assets/screenshots/my_orders_screen.png)
+![image_alt](https://raw.githubusercontent.com/zyaddmostafa/Ideas-and-Concepts-Task/refs/heads/main/My_Order_Screen.png)
 
 ---
 
-**Enjoy exploring the Flutter User Profile App!**
+**Enjoy exploring the Flutter User Profile Feature!**
