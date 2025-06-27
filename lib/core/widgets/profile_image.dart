@@ -27,8 +27,8 @@ class ProfileImage extends StatelessWidget {
         ),
         if (showCameraIcon)
           Positioned(
-            bottom: 4,
-            right: 4,
+            bottom: 8,
+            right: 8,
             child: GestureDetector(
               onTap: onCameraTap,
               child: Container(

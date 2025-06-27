@@ -27,6 +27,7 @@ class ProfileEditForm extends StatelessWidget {
             const SizedBox(height: 12),
             _buildDateOfBirthField(controller),
             const SizedBox(height: 12),
+            const LabelText('Gender'),
             GenderSelection(),
           ],
         ),
