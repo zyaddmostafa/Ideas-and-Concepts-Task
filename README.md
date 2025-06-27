@@ -57,7 +57,7 @@ Below are screenshots of the main features of the app:
 
 ### Profile Screen
 
-![image_alt]((https://github.com/zyaddmostafa/Ideas-and-Concepts-Task/blob/main/profile_Screen.png?raw=true))
+![image_alt](https://github.com/zyaddmostafa/Ideas-and-Concepts-Task/blob/main/profile_Screen.png?raw=true)
 
 ### Edit Profile Screen
 
