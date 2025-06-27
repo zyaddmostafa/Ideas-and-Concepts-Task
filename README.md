@@ -51,6 +51,22 @@ lib/
 - Android/iOS permissions are required for image picking.
 - The app is structured for easy extension and clean code maintenance.
 
+## Screenshots
+
+Below are screenshots of the main features of the app:
+
+### Profile Screen
+
+![Profile Screen](assets/screenshots/profile_screen.png)
+
+### Edit Profile Screen
+
+![Edit Profile Screen](assets/screenshots/edit_profile_screen.png)
+
+### My Orders Screen
+
+![My Orders Screen](assets/screenshots/my_orders_screen.png)
+
 ---
 
 **Enjoy exploring the Flutter User Profile App!**
