@@ -8,4 +8,6 @@ class AppColor {
   static const salamon = Color(0xFFF4b5a4);
   static const beige = Color(0xFFFAF0E6);
   static const black54 = Colors.black54;
+  static const snackBarSuccsessColor = Color(0xFF4CAF50);
+  static const snackBarErrorColor = Color(0xFFF44336);
 }

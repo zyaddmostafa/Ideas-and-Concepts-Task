@@ -6,19 +6,21 @@ class ProfileHeader extends StatelessWidget {
   final String imageUrl;
   final String name;
   final String email;
-  final double avatarRadius;
   final bool showCameraIcon;
   final Color userInfoBackgroundColor;
   final VoidCallback? onImageTap;
+  final double userInfoVerticalSpace;
+  final double imageAndUserInfoVerticalSpace;
   const ProfileHeader({
     super.key,
     required this.imageUrl,
     required this.name,
     required this.email,
-    this.avatarRadius = 60,
     this.showCameraIcon = false,
     this.userInfoBackgroundColor = Colors.transparent,
     this.onImageTap,
+    this.userInfoVerticalSpace = 8,
+    this.imageAndUserInfoVerticalSpace = 0,
   });
 
   @override
@@ -29,12 +31,12 @@ class ProfileHeader extends StatelessWidget {
           onTap: onImageTap,
           child: ProfileImage(
             imageUrl: imageUrl,
-            radius: avatarRadius,
             showCameraIcon: showCameraIcon,
           ),
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: imageAndUserInfoVerticalSpace),
         UserInfo(
+          verticalSpace: 8,
           name: name,
           email: email,
           backgroundColor: userInfoBackgroundColor,

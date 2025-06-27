@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fluttertask/core/constants/constants.dart';
+import 'package:fluttertask/core/constants/apis_constants.dart';
 
 class FirebaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -8,7 +8,7 @@ class FirebaseService {
     try {
       final doc =
           await _firestore
-              .collection(Constants.userCollection)
+              .collection(ApiConstants.userCollection)
               .doc(userId)
               .get();
       return doc.exists ? doc.data() : null;
@@ -20,7 +20,7 @@ class FirebaseService {
   Future<void> updateUserData(String userId, Map<String, dynamic> data) async {
     try {
       await _firestore
-          .collection(Constants.userCollection)
+          .collection(ApiConstants.userCollection)
           .doc(userId)
           .set(data, SetOptions(merge: true));
     } catch (e) {

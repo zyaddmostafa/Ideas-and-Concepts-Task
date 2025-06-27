@@ -6,11 +6,13 @@ class UserInfo extends StatelessWidget {
   final String name;
   final String email;
   final Color backgroundColor;
+  final double verticalSpace;
   const UserInfo({
     super.key,
     required this.name,
     required this.email,
     required this.backgroundColor,
+    required this.verticalSpace,
   });
 
   @override
@@ -18,10 +20,10 @@ class UserInfo extends StatelessWidget {
     return Container(
       width: double.infinity,
       color: backgroundColor,
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: verticalSpace),
       child: Column(
         children: [
-          Text(name, style: AppTextStyles.font20Bold),
+          Text(name, style: AppTextStyles.font24Bold),
 
           Text(
             email,

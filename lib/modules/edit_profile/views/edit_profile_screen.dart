@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/constants/app_constants.dart';
 import 'package:fluttertask/core/widgets/custom_app_bar.dart';
-import 'package:fluttertask/core/widgets/profile_header.dart';
 import 'package:fluttertask/data/models/user_model.dart';
-import 'package:fluttertask/modules/edit_profile/controller/edit_profile_controller.dart';
-import 'package:fluttertask/modules/edit_profile/widgets/custom_elevated_button.dart';
-import 'package:fluttertask/modules/edit_profile/widgets/profile_edit_form.dart';
-import 'package:fluttertask/routes/routes.dart';
+import 'package:fluttertask/modules/edit_profile/widgets/edit_profile_body.dart';
+import 'package:fluttertask/modules/edit_profile/widgets/edit_profile_header_getx_builer.dart';
+import 'package:fluttertask/modules/profile/controller/profle_controller.dart';
 import 'package:get/get.dart';
 
 class EditProfileScreen extends StatelessWidget {
@@ -15,50 +13,23 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserModel argument = Get.arguments;
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return WillPopScope(
+      onWillPop: () async {
+        Get.find<ProfileController>().fetchUser();
+        return true; // Allow back navigation
+      },
+      child: Scaffold(
+        body: SafeArea(
           child: Column(
             children: [
-              const SizedBox(height: 16),
-              // Custom App Bar
               CustomAppBar(onBack: () => Get.back()),
               const SizedBox(height: 16),
-
-              // Profile Image with Camera Icon
-              GetX<EditProfileController>(
-                builder: (controller) {
-                  final img =
-                      controller.imageUrl!.value.isNotEmpty
-                          ? controller.imageUrl!.value
-                          : argument.imageUrl ?? '';
-                  return ProfileHeader(
-                    imageUrl: img,
-
-                    name: argument.name ?? 'Madison Smith',
-                    email: argument.email ?? 'zyad@gmail.com',
-                    userInfoBackgroundColor: AppColor.beige,
-                    showCameraIcon: true,
-                    onImageTap: () {
-                      controller.pickAndUploadImage();
-                    },
-                  );
-                },
-              ),
-
+              EditProfileHeaderGetxBuilder(argument: argument),
               const SizedBox(height: 20),
-              // Form Fields
-              ProfileEditForm(),
 
-              const SizedBox(height: 20),
-              // Form Fields
-              ProfileEditForm(),
-              CustomElevatedButton(
-                onPressed: () {
-                  final controller = Get.find<EditProfileController>();
-                  controller.updateUser();
-                  Get.toNamed(Routes.profileScreen);
-                },
+              EditProfileBody(
+                profileImage:
+                    argument.imageUrl ?? AppConstants.defultProfileImageUrl,
               ),
             ],
           ),

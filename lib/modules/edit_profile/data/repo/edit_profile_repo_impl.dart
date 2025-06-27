@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
-import 'package:fluttertask/core/constants/constants.dart';
+import 'package:fluttertask/core/constants/apis_constants.dart';
 import 'package:fluttertask/data/service/firebase_service.dart';
 import 'package:fluttertask/data/models/user_model.dart';
 import 'package:fluttertask/data/service/supbase_service.dart';
@@ -16,7 +16,7 @@ class EditProfileRepoImpl {
   Future<void> updateUserProfile(String userId, UserModel user) async {
     try {
       await firebaseService.updateUserData(userId, user.toJson());
-      throw Get.snackbar(
+      Get.snackbar(
         'success',
         'User profile updated successfully',
         snackPosition: SnackPosition.BOTTOM,
@@ -24,17 +24,20 @@ class EditProfileRepoImpl {
         colorText: AppColor.white,
       );
     } on Exception catch (e) {
-      throw Get.snackbar(
+      Get.snackbar(
         'Error',
         'Failed to update user profile: $e',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.redAccent,
         colorText: AppColor.white,
       );
+      rethrow;
     }
   }
 
   Future<File?> pickImage() async {
+    // clear the bucket first cause avoid duplicate images
+
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(
       source: ImageSource.gallery,
@@ -66,10 +69,24 @@ class EditProfileRepoImpl {
 
   Future<String?> uploadImageAndGetUrl(File image) async {
     try {
+      // Check if image already exists in Supabase
+      final fileName = image.path.split(Platform.pathSeparator).last;
+      final filePath = '${ApiConstants.kProfileImagePath}/$fileName';
+      final existingUrl = await SupabaseService.imageExists(filePath);
+      if (existingUrl != null) {
+        Get.snackbar(
+          'Info',
+          'Image already exists. Using existing image.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green,
+          colorText: AppColor.white,
+        );
+        return existingUrl;
+      }
       // Upload to Supabase and get public URL
       final publicUrl = await SupabaseService.uploadImage(
         image,
-        Constants.kProfileImagePath,
+        ApiConstants.kProfileImagePath,
       );
 
       if (publicUrl != null) {
@@ -116,6 +133,26 @@ class EditProfileRepoImpl {
       Get.snackbar(
         'Error',
         'Process failed: $e',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.redAccent,
+        colorText: AppColor.white,
+      );
+      return null;
+    }
+  }
+
+  Future<String?> imageExists(String filePath) async {
+    try {
+      final publicUrl = await SupabaseService.imageExists(filePath);
+      if (publicUrl != null) {
+        return publicUrl;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Check failed: $e',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.redAccent,
         colorText: AppColor.white,

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertask/core/constants/app_color.dart';
+import 'package:fluttertask/core/constants/app_constants.dart';
 
 class ProfileImage extends StatelessWidget {
   final String imageUrl;
   final bool showCameraIcon;
-  final double radius;
   final VoidCallback? onCameraTap;
-
   const ProfileImage({
     super.key,
     required this.imageUrl,
     this.showCameraIcon = true,
-    required this.radius,
     this.onCameraTap,
   });
 
@@ -21,7 +19,7 @@ class ProfileImage extends StatelessWidget {
       alignment: Alignment.bottomRight,
       children: [
         CircleAvatar(
-          radius: radius,
+          radius: AppConstants.profileImageRadius,
           backgroundImage: NetworkImage(imageUrl),
           backgroundColor: AppColor.salamon.withValues(
             alpha: 0.2, // Adjust alpha for a subtle background color
@@ -37,14 +35,9 @@ class ProfileImage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColor.salamon,
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppColor.white, width: 2),
                 ),
                 padding: const EdgeInsets.all(6),
-                child: const Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
-                  size: 20,
-                ),
+                child: Icon(Icons.camera_alt, color: AppColor.black, size: 24),
               ),
             ),
           ),

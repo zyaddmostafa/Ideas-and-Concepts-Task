@@ -14,16 +14,6 @@ class AppTextStyles {
     fontSize: 22,
   );
 
-  static const TextStyle font15SemiBold = TextStyle(
-    fontWeight: FontWeight.w600,
-    fontSize: 15,
-  );
-
-  static const TextStyle font16Bold = TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-  );
-
   static const TextStyle font14Regular = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
@@ -33,8 +23,8 @@ class AppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
-  static const TextStyle font18Regular = TextStyle(
-    fontSize: 18,
+  static const TextStyle font20Regular = TextStyle(
+    fontSize: 20,
     fontWeight: FontWeight.w500,
   );
   static const TextStyle font14Bold = TextStyle(
@@ -46,7 +36,10 @@ class AppTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
-
+  static const TextStyle font24Bold = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
   static const TextStyle font15Medium = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w600,

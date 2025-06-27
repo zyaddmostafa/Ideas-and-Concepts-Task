@@ -1,37 +1,17 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:fluttertask/core/constants/constants.dart';
+import 'package:fluttertask/core/constants/apis_constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:path/path.dart' as b;
 
 class SupabaseService {
   static late Supabase _supabase; // Fixed typo: _supbase -> _supabase
 
-  // static Future<void> createBucket(String bucketName) async {
-  //   try {
-  //     // Check if bucket exists first
-  //     final buckets = await _supabase.client.storage.listBuckets();
-
-  //     // If bucket already exists, return early
-  //     if (buckets.any((bucket) => bucket.name == bucketName)) {
-  //       log('Bucket "$bucketName" already exists');
-  //       return;
-  //     }
-
-  //     // Create bucket only if it doesn't exist
-  //     await _supabase.client.storage.createBucket(bucketName);
-  //     log('Bucket "$bucketName" created successfully');
-  //   } catch (error) {
-  //     log('Error with bucket operations: $error');
-  //     rethrow;
-  //   }
-  // }
-
   static Future<void> initializeSupabase() async {
     // Added Future<void> for proper async
     _supabase = await Supabase.initialize(
-      url: Constants.kSupabaseUrl,
-      anonKey: Constants.kSupabaseAnonKey,
+      url: ApiConstants.kSupabaseUrl,
+      anonKey: ApiConstants.kSupabaseAnonKey,
     );
   }
 
@@ -41,12 +21,12 @@ class SupabaseService {
 
       // Upload the file
       await _supabase.client.storage
-          .from(Constants.kProfileImageBucket)
+          .from(ApiConstants.kProfileImageBucket)
           .upload('$path/$fileName', file); // Fixed: removed extra dot
 
       // Get public URL
       final String publicUrl = _supabase.client.storage
-          .from(Constants.kProfileImageBucket)
+          .from(ApiConstants.kProfileImageBucket)
           .getPublicUrl('$path/$fileName');
 
       return publicUrl;
@@ -59,20 +39,25 @@ class SupabaseService {
   // Additional method to get public URL
   String getPublicUrl(String path) {
     return _supabase.client.storage
-        .from(Constants.kProfileImageBucket)
+        .from(ApiConstants.kProfileImageBucket)
         .getPublicUrl(path);
   }
 
-  // Method to delete image
-  static Future<void> deleteImage(String path) async {
+  static Future<String?> imageExists(String filePath) async {
     try {
-      await _supabase.client.storage.from(Constants.kProfileImageBucket).remove(
-        [path],
-      );
-      log('Image deleted successfully');
+      await _supabase.client.storage
+          .from(ApiConstants.kProfileImageBucket)
+          .info(filePath);
+
+      log('Image exists at: $filePath');
+      // Get and return the public URL if the image exists
+      final String publicUrl = _supabase.client.storage
+          .from(ApiConstants.kProfileImageBucket)
+          .getPublicUrl(filePath);
+      return publicUrl;
     } catch (error) {
-      log('Error deleting image: $error');
-      rethrow;
+      log('Image does not exist at: $filePath');
+      return null;
     }
   }
 }

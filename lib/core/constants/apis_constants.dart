@@ -1,4 +1,4 @@
-class Constants {
+class ApiConstants {
   static const String userCollection = 'users';
   static const String userId = 'iWvrfQjvONx2fv7njjhw';
   static const String kSupabaseUrl = 'https://hpidvzjvghopxyuupadm.supabase.co';

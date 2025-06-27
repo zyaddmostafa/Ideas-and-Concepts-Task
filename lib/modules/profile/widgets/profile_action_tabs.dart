@@ -28,7 +28,7 @@ class ProfileActionTabs extends StatelessWidget {
                     arguments: Get.find<ProfileController>().user,
                   ),
             ),
-            Container(height: 40, width: 1.5, color: AppColor.white),
+            Container(height: 50, width: 1.5, color: AppColor.white),
             ProfileTabButton(
               icon: Icons.local_offer_outlined,
               label: 'My Orders',

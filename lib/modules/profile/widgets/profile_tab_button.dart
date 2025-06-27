@@ -18,10 +18,10 @@ class ProfileTabButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
         child: Column(
           children: [
-            Icon(icon, color: AppColor.black, size: 28),
+            Icon(icon, color: AppColor.black, size: 32),
             const SizedBox(height: 4),
             Text(label, style: AppTextStyles.font14Regular),
           ],

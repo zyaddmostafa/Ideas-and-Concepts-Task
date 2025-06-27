@@ -6,8 +6,14 @@ class CustomAppBar extends StatelessWidget {
   final VoidCallback? onBack;
 
   final String title;
+  final bool showEditButton;
 
-  const CustomAppBar({super.key, this.onBack, this.title = 'My Profile'});
+  const CustomAppBar({
+    super.key,
+    this.onBack,
+    this.title = 'My Profile',
+    this.showEditButton = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,13 @@ class CustomAppBar extends StatelessWidget {
               style: AppTextStyles.font22Bold.copyWith(color: AppColor.salamon),
             ),
           ),
-          const Spacer(),
+
+          showEditButton
+              ? IconButton(
+                onPressed: null,
+                icon: const Icon(Icons.edit, color: AppColor.salamon, size: 30),
+              )
+              : Spacer(),
         ],
       ),
     );
