@@ -57,11 +57,11 @@ Below are screenshots of the main features of the app:
 
 ### Profile Screen
 
-![image_alt](https://github.com/zyaddmostafa/Ideas-and-Concepts-Task/blob/main/profile_Screen.png?raw=true)
+![image_alt](https://github.com/zyaddmostafa/Ideas-and-Concepts-Task/blob/main/profileScreen.png?raw=true)
 
 ### Edit Profile Screen
 
-![image_alt](https://raw.githubusercontent.com/zyaddmostafa/Ideas-and-Concepts-Task/refs/heads/main/Edit_Profile_Screen.png)
+![image_alt](https://raw.githubusercontent.com/zyaddmostafa/Ideas-and-Concepts-Task/refs/heads/main/editProfileScreen.png)
 
 ### My Orders Screen
 
